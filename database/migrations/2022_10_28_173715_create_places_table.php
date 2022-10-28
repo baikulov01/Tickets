@@ -15,6 +15,9 @@ class CreatePlacesTable extends Migration
     {
         Schema::create('places', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_bus');
+            $table->string('status');
+            $table->unsignedBigInteger('id_trip');
             $table->timestamps();
         });
     }
