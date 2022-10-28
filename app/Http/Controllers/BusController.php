@@ -14,7 +14,8 @@ class BusController extends Controller
      */
     public function index()
     {
-        //
+        $buses = Bus::all();
+        return view('home',compact('buses'));
     }
 
     /**
