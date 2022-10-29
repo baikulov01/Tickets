@@ -13,4 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'BusController@index');
+Route::get('/', 'BusController@index')->name('buses.index');
+Route::get('/create', 'BusController@create');
+Route::post('/create', 'BusController@store');
+

@@ -25,7 +25,7 @@ class BusController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -36,7 +36,11 @@ class BusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Bus::create([
+            'number' => request('number'),
+            'place_count' => request('place_count')
+        ]);
+        return redirect()->route('buses.index');
     }
 
     /**

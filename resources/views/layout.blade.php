@@ -10,10 +10,11 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
-    <a class="navbar-brand" href="#">Билеты.ru</a>
+    <a class="navbar-brand" href="/tickets/public/">Билеты.ru</a>
 </nav>
 
 <div class="container">
+    <a class="btn btn-primary" href="/tickets/public/create" role="button">Add new bus</a>
 
     <div class="row">
 
