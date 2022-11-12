@@ -9,6 +9,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Номер</th>
                 <th scope="col">Количество мест</th>
+                <th scope="col">Действия</th>
             </tr>
             </thead>
             <tbody>
@@ -17,6 +18,8 @@
                 <th scope="row">{{$bus->id}}</th>
                 <td>{{$bus->number}}</td>
                 <td>{{$bus->place_count}}</td>
+                <td><a href="/tickets/public/buses/{{$bus->id}}" class="btn btn-primary">Update</td>
+                <td><a href="delete/{{$bus->id}}" class="btn btn-danger">Delete</td>
             </tr>
                 @endforeach
             </tbody>

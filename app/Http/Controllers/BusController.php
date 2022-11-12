@@ -28,6 +28,13 @@ class BusController extends Controller
         return view('create');
     }
 
+    public function delete(Bus $bus)
+    {
+        $bus->delete();
+        return redirect()->route('buses.index');
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -51,7 +58,7 @@ class BusController extends Controller
      */
     public function show(Bus $bus)
     {
-        //
+        return view('show', compact('bus'));
     }
 
     /**
@@ -74,7 +81,11 @@ class BusController extends Controller
      */
     public function update(Request $request, Bus $bus)
     {
-        //
+            $bus->number= request('number');
+            $bus->place_count = request('place_count');
+            $bus->save();
+
+        return redirect()->route('buses.index');
     }
 
     /**
@@ -85,6 +96,6 @@ class BusController extends Controller
      */
     public function destroy(Bus $bus)
     {
-        //
+        //DB::table('buses')->where('id', '=',  )->delete();
     }
 }

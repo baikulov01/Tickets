@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'BusController@index')->name('buses.index');
+Route::get('/buses/{bus}', 'BusController@show')->name('buses.show');
+Route::post('/buses/{bus}', 'BusController@update')->name('buses.update');
+Route::get('/delete/{bus}', 'BusController@delete')->name('buses.delete');
 Route::get('/create', 'BusController@create');
 Route::post('/create', 'BusController@store');
 
