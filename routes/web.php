@@ -28,14 +28,21 @@ Route::group(['middleware' => 'role:administrator'], function() {
     Route::post('/tickets_create', 'TicketController@store');
     Route::get('/tickets/{ticket}', 'TicketController@show')->name('tickets_show');
     Route::post('/tickets/{ticket}', 'TicketController@update')->name('tickets_update');
-    Route::get('/tickets/{ticket}', 'TicketController@delete')->name('tickets_delete');
+    Route::get('/tickets_delete/{ticket}', 'TicketController@delete')->name('tickets_delete');
 
     Route::get('/tripsPage', 'TripController@index')->name('trips.index');
     Route::get('/trips_create', 'TripController@create');
     Route::post('/trips_create', 'TripController@store');
-    Route::get('/trips/{trip}', 'TripController@delete')->name('trips_delete');
+    Route::get('/trips_delete/{trip}', 'TripController@delete')->name('trips_delete');
     Route::get('/trips/{trip}', 'TripController@show')->name('trips_show');
     Route::post('/trips/{trip}', 'TripController@update')->name('trips_update');
+
+    Route::get('/placesPage', 'PlaceController@index')->name('places.index');
+    Route::get('/places_create', 'PlaceController@create');
+    Route::post('/places_create', 'PlaceController@store');
+    Route::get('/places_delete/{place}', 'PlaceController@delete')->name('places_delete');
+    Route::get('/places/{place}', 'PlaceController@show')->name('places_show');
+    Route::post('/places/{place}', 'PlaceController@update')->name('places_update');
  });
 
 Auth::routes();

@@ -27,7 +27,7 @@
                 <td>{{$ticket->price}}</td>
                 <td>{{$ticket->status}}</td>
                 <td><a href="/tickets/public/tickets/{{$ticket->id}}" class="btn btn-primary">Обновить</td>
-                <td><a href="/tickets/public/tickets/{{$ticket->id}}" class="btn btn-danger">Удалить</td>
+                <td><a href="tickets_delete/{{$ticket->id}}" class="btn btn-danger">Удалить</td>
             </tr>
                 @endforeach
             </tbody>

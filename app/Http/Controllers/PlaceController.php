@@ -14,7 +14,8 @@ class PlaceController extends Controller
      */
     public function index()
     {
-        //
+        $places = Place::all();
+        return view('placesPage', compact('places'));
     }
 
     /**
@@ -24,7 +25,13 @@ class PlaceController extends Controller
      */
     public function create()
     {
-        //
+        return view('places_create');
+    }
+
+    public function delete(Place $place)
+    {
+        $place->delete();
+        return redirect()->route('places.index');
     }
 
     /**
@@ -35,7 +42,13 @@ class PlaceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Place::create([
+            'id_bus' => request('id_bus'),
+            'id_trip' => request('id_trip'),
+            'status' => request('status'),
+        ]);
+
+        return redirect() ->route('places.index');
     }
 
     /**
@@ -46,7 +59,7 @@ class PlaceController extends Controller
      */
     public function show(Place $place)
     {
-        //
+        return view('places_show', compact('place'));
     }
 
     /**
@@ -69,7 +82,12 @@ class PlaceController extends Controller
      */
     public function update(Request $request, Place $place)
     {
-        //
+        $place->id_bus= request('id_bus');
+        $place->id_trip = request('id_trip');
+        $place->status = request('status');
+        $place->save();
+
+        return redirect()->route('places.index');
     }
 
     /**

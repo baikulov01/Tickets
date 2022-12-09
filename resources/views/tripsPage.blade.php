@@ -29,7 +29,7 @@
                 <td>{{$trip->departure_time}}</td>
                 <td>{{$trip->arrival_time}}</td>
                 <td><a href="/tickets/public/trips/{{$trip->id}}" class="btn btn-primary">Обновить</td>
-                <td><a href="/tickets/public/trips/{{$trip->id}}" class="btn btn-danger">Удалить</td>
+                <td><a href="trips_delete/{{$trip->id}}" class="btn btn-danger">Удалить</td>
             </tr>
                 @endforeach
             </tbody>
