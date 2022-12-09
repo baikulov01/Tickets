@@ -14,7 +14,8 @@ class TicketController extends Controller
      */
     public function index()
     {
-        //
+        $tickets = Ticket::all();
+        return view('ticketsPage', compact('tickets'));
     }
 
     /**
@@ -24,8 +25,15 @@ class TicketController extends Controller
      */
     public function create()
     {
-        //
+        return view('tickets_create');
     }
+
+    public function delete(Ticket $ticket)
+    {
+        $ticket->delete();
+        return redirect()->route('tickets.index');
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +43,15 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Ticket::create([
+            'description' => request('description'),
+            'price' => request('price'),
+            'status' => request('status'),
+            'id_place' => request('id_place'),
+            'id_user' => request('id_user'),
+        ]);
+
+        return redirect() ->route('tickets.index');
     }
 
     /**
@@ -46,7 +62,7 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        //
+        return view('tickets_show', compact('ticket'));
     }
 
     /**
@@ -69,7 +85,15 @@ class TicketController extends Controller
      */
     public function update(Request $request, Ticket $ticket)
     {
-        //
+        $ticket->description= request('description');
+        $ticket->price = request('price');
+        $ticket->status = request('status');
+        $ticket->id_place = request('id_place');
+        $ticket->id_user = request('id_user');
+        $ticket->save();
+
+        return redirect()->route('tickets.index');
+        
     }
 
     /**

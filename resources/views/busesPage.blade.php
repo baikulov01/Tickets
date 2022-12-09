@@ -2,6 +2,7 @@
 
 @section('content')
 
+<h1 class="display-4">Автобусы</h1>
     <div class="table-responsive">
         <table class="table table-hover table-striped">
             <thead>
