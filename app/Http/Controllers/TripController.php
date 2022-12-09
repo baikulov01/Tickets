@@ -14,7 +14,8 @@ class TripController extends Controller
      */
     public function index()
     {
-        //
+        $trips = Trip::all();
+        return view('tripsPage', compact('trips'));
     }
 
     /**
@@ -24,7 +25,13 @@ class TripController extends Controller
      */
     public function create()
     {
-        //
+        return view('trips_create');
+    }
+
+    public function delete(Trip $trip)
+    {
+        $trip->delete();
+        return redirect()->route('trips.index');
     }
 
     /**
@@ -35,7 +42,15 @@ class TripController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Trip::create([
+            'departure_place' => request('departure_place'),
+            'arrival_place' => request('arrival_place'),
+            'departure_time' => request('departure_time'),
+            'arrival_time' => request('arrival_time'),
+            'id_bus' => request('id_bus'),
+        ]);
+
+        return redirect() ->route('trips.index');
     }
 
     /**
@@ -46,7 +61,7 @@ class TripController extends Controller
      */
     public function show(Trip $trip)
     {
-        //
+         return view('trips_show', compact('trip'));
     }
 
     /**
@@ -69,7 +84,14 @@ class TripController extends Controller
      */
     public function update(Request $request, Trip $trip)
     {
-        //
+        $trip->departure_place= request('departure_place');
+        $trip->arrival_place = request('arrival_place');
+        $trip->departure_time = request('departure_time');
+        $trip->arrival_time = request('arrival_time');
+        $trip->id_bus = request('id_bus');
+        $trip->save();
+
+        return redirect()->route('trips.index');
     }
 
     /**

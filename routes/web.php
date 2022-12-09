@@ -29,6 +29,13 @@ Route::group(['middleware' => 'role:administrator'], function() {
     Route::get('/tickets/{ticket}', 'TicketController@show')->name('tickets_show');
     Route::post('/tickets/{ticket}', 'TicketController@update')->name('tickets_update');
     Route::get('/tickets/{ticket}', 'TicketController@delete')->name('tickets_delete');
+
+    Route::get('/tripsPage', 'TripController@index')->name('trips.index');
+    Route::get('/trips_create', 'TripController@create');
+    Route::post('/trips_create', 'TripController@store');
+    Route::get('/trips/{trip}', 'TripController@delete')->name('trips_delete');
+    Route::get('/trips/{trip}', 'TripController@show')->name('trips_show');
+    Route::post('/trips/{trip}', 'TripController@update')->name('trips_update');
  });
 
 Auth::routes();
