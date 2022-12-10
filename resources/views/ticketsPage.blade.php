@@ -1,13 +1,15 @@
 @extends('layout')
 
 @section('content')
+@role('administrator')
 <a class="btn btn-primary" href="/tickets/public/tickets_create" role="button">Добавить Новый Билет</a><br>
+@endrole
 <h1 class="display-4">Билеты</h1>
 
 
 
     <div class="table-responsive">
-        
+
         <table class="table table-hover table-striped">
             <thead>
             <tr>

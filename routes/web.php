@@ -22,8 +22,8 @@ Route::group(['middleware' => 'role:administrator'], function() {
     Route::get('/delete/{bus}', 'BusController@delete')->name('buses.delete');
     Route::get('/create', 'BusController@create');
     Route::post('/create', 'BusController@store');
-    
-    Route::get('/ticketsPage', 'TicketController@index')->name('tickets.index');
+
+
     Route::get('/tickets_create', 'TicketController@create');
     Route::post('/tickets_create', 'TicketController@store');
     Route::get('/tickets/{ticket}', 'TicketController@show')->name('tickets_show');
@@ -44,6 +44,7 @@ Route::group(['middleware' => 'role:administrator'], function() {
     Route::get('/places/{place}', 'PlaceController@show')->name('places_show');
     Route::post('/places/{place}', 'PlaceController@update')->name('places_update');
  });
+ Route::get('/ticketsPage', 'TicketController@index')->name('tickets.index');
 
 Auth::routes();
 
