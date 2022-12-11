@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,12 +31,14 @@ Route::group(['middleware' => 'role:administrator'], function() {
     Route::post('/tickets/{ticket}', 'TicketController@update')->name('tickets_update');
     Route::get('/tickets_delete/{ticket}', 'TicketController@delete')->name('tickets_delete');
 
+
     Route::get('/tripsPage', 'TripController@index')->name('trips.index');
     Route::get('/trips_create', 'TripController@create');
     Route::post('/trips_create', 'TripController@store');
     Route::get('/trips_delete/{trip}', 'TripController@delete')->name('trips_delete');
     Route::get('/trips/{trip}', 'TripController@show')->name('trips_show');
     Route::post('/trips/{trip}', 'TripController@update')->name('trips_update');
+
 
     Route::get('/placesPage', 'PlaceController@index')->name('places.index');
     Route::get('/places_create', 'PlaceController@create');
@@ -44,6 +47,7 @@ Route::group(['middleware' => 'role:administrator'], function() {
     Route::get('/places/{place}', 'PlaceController@show')->name('places_show');
     Route::post('/places/{place}', 'PlaceController@update')->name('places_update');
  });
+ Route::get('/buy', [TicketController::class, 'buy'])->name('buy');
  Route::get('/ticketsPage', 'TicketController@index')->name('tickets.index');
 
 Auth::routes();

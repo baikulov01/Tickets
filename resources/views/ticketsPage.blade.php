@@ -2,7 +2,7 @@
 
 @section('content')
 @role('administrator')
-<a class="btn btn-primary" href="/tickets/public/tickets_create" role="button">Добавить Новый Билет</a><br>
+<a class="btn btn-primary" href="/tickets_create" role="button">Добавить Новый Билет</a><br>
 @endrole
 <h1 class="display-4">Билеты</h1>
 
@@ -28,8 +28,12 @@
                 <td>{{$ticket->description}}</td>
                 <td>{{$ticket->price}}</td>
                 <td>{{$ticket->status}}</td>
-                <td><a href="/tickets/public/tickets/{{$ticket->id}}" class="btn btn-primary">Обновить</td>
-                <td><a href="tickets_delete/{{$ticket->id}}" class="btn btn-danger">Удалить</td>
+                @role('administrator')
+                <td><a href="/tickets/{{$ticket->id}}" class="btn btn-primary">Обновить</td>
+                <td><a href="/tickets_delete/{{$ticket->id}}" class="btn btn-danger">Удалить</td>
+                @endrole
+                <td><a href="/buy?id={{$ticket->id}}" class="btn btn-success">Купить</td>
+
             </tr>
                 @endforeach
             </tbody>

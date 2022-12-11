@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller
 {
@@ -51,6 +52,15 @@ class TicketController extends Controller
             'id_user' => request('id_user'),
         ]);
 
+
+    }
+
+    public function buy(Request $request){
+        $ticket = Ticket::where("id",$request->id)->first();
+        $ticket->id_user = Auth::user()->id;
+        $ticket->status = "Куплен";
+        $ticket->save();
+
         return redirect() ->route('tickets.index');
     }
 
@@ -93,7 +103,7 @@ class TicketController extends Controller
         $ticket->save();
 
         return redirect()->route('tickets.index');
-        
+
     }
 
     /**

@@ -1,13 +1,13 @@
 @extends('layout')
 
 @section('content')
-<a class="btn btn-primary" href="/tickets/public/places_create" role="button">Добавить Новое Место</a><br>
+<a class="btn btn-primary" href="/places_create" role="button">Добавить Новое Место</a><br>
 <h1 class="display-4">Места</h1>
 
 
 
     <div class="table-responsive">
-        
+
         <table class="table table-hover table-striped">
             <thead>
             <tr>
@@ -26,7 +26,7 @@
                 <td>{{$place->id_bus}}</td>
                 <td>{{$place->id_trip}}</td>
                 <td>{{$place->status}}</td>
-                <td><a href="/tickets/public/places/{{$place->id}}" class="btn btn-primary">Обновить</td>
+                <td><a href="/places/{{$place->id}}" class="btn btn-primary">Обновить</td>
                 <td><a href="places_delete/{{$place->id}}" class="btn btn-danger">Удалить</td>
             </tr>
                 @endforeach

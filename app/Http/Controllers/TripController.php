@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Bus;
+use App\Place;
 use App\Trip;
 use Illuminate\Http\Request;
+use App\Ticket;
+use Exception;
+use Illuminate\Support\Facades\DB;
+
 
 class TripController extends Controller
 {
@@ -42,13 +48,37 @@ class TripController extends Controller
      */
     public function store(Request $request)
     {
-        Trip::create([
+        DB::beginTransaction();
+        try{
+        $trip = Trip::create([
             'departure_place' => request('departure_place'),
             'arrival_place' => request('arrival_place'),
             'departure_time' => request('departure_time'),
             'arrival_time' => request('arrival_time'),
             'id_bus' => request('id_bus'),
         ]);
+        $bus = Bus::where("id",request("id_bus"))->first();
+        // dd($bus);
+        for($i=0; $i<$bus->place_count;$i++){
+            $place = Place::create([
+                'status' => "Свободно",
+                'id_trip' => $trip->id
+            ]);
+
+            Ticket::create([
+                'id_place' =>  $place->id,
+                'status' => "Не куплен",
+                'price' => 800/$bus->place_count,
+            ]);
+        }
+        DB::commit();
+    }
+    catch(Exception $exception)
+    {
+        DB::rollback();
+        return $exception;
+    }
+
 
         return redirect() ->route('trips.index');
     }

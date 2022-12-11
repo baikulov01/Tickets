@@ -11,7 +11,7 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-<h1 class="navbar-brand" href="/tickets/public/">Билеты.ru</h1>
+<h1 class="navbar-brand" href="/">Билеты.ru</h1>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -19,23 +19,23 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/tickets/public/home">Home<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="/tickets/public/ticketsPage">Tickets</a>
+        <a class="nav-link" href="/ticketsPage">Tickets</a>
       </li>
       @role('administrator')
 
       <li class="nav-item">
-        <a class="nav-link" href="/tickets/public/tripsPage">Trips</a>
+        <a class="nav-link" href="/tripsPage">Trips</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="/tickets/public/busesPage">Buses</a>
+        <a class="nav-link" href="/busesPage">Buses</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/tickets/public/placesPage">Places</a>
+        <a class="nav-link" href="/placesPage">Places</a>
       </li>
       @endrole
     </ul>
@@ -43,7 +43,7 @@
 </nav>
 
 <div class="container">
-    <!-- <a class="btn btn-primary" href="/tickets/public/create" role="button">Add new bus</a> -->
+    <!-- <a class="btn btn-primary" href="/create" role="button">Add new bus</a> -->
 
     <div class="row">
 
