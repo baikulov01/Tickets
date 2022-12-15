@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-
+<a class="btn btn-primary" href="/create" role="button">Добавить Новый Автобус</a><br>
 <h1 class="display-4">Автобусы</h1>
     <div class="table-responsive">
         <table class="table table-hover table-striped">
