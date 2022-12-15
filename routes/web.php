@@ -46,9 +46,16 @@ Route::group(['middleware' => 'role:administrator'], function() {
     Route::get('/places_delete/{place}', 'PlaceController@delete')->name('places_delete');
     Route::get('/places/{place}', 'PlaceController@show')->name('places_show');
     Route::post('/places/{place}', 'PlaceController@update')->name('places_update');
+    Route::get('/search', 'PlaceController@search')->name('search_place');
  });
  Route::get('/buy', [TicketController::class, 'buy'])->name('buy');
  Route::get('/ticketsPage', 'TicketController@index')->name('tickets.index');
+
+ Route::get('/search', 'BusController@search')->name('search');
+
+ 
+
+ 
 
 Auth::routes();
 

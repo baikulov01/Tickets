@@ -10,7 +10,7 @@
 
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav  class="navbar navbar-expand-lg navbar-light bg-light">
 <h1 class="navbar-brand" href="/">Билеты.ru</h1>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -49,10 +49,10 @@
 
         <div class="col-md-12">
 
-            <form>
+            <form method="get" action="{{ route('search')}}">
                 <div class="form-row">
                     <div class="form-group col-md-10">
-                        <input type="text" class="form-control" id="q" name="q" placeholder="Search...">
+                        <input type="text" class="form-control" id="s" name="s" placeholder="Найти..." >
                     </div>
                     <div class="form-group col-md-2">
                         <button type="submit" class="btn btn-primary btn-block">Search</button>

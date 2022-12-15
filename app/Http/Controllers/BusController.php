@@ -88,6 +88,14 @@ class BusController extends Controller
         return redirect()->route('buses.index');
     }
 
+    public function search(Request $request)
+    {
+        $s = $request ->s;
+        $buses = Bus::where('number', 'LIKE', "%{$s}%")->orderBy('number')->paginate(10);
+        
+        return view('busesPage',compact('buses'));
+    }
+
     /**
      * Remove the specified resource from storage.
      *

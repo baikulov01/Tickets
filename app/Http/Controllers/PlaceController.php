@@ -18,6 +18,14 @@ class PlaceController extends Controller
         return view('placesPage', compact('places'));
     }
 
+    public function search(Request $request)
+    {
+        $s = $request ->s;
+        $places = Place::where('status', 'LIKE', "%{$s}%")->orderBy('status')->paginate(10);
+        
+        return view('placesPage', compact('places'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
