@@ -53,11 +53,7 @@ Route::group(['middleware' => 'role:administrator'], function() {
  Route::get('/tripsPage', 'TripController@index')->name('trips.index');
  Route::get('/search', 'BusController@search')->name('search');
  Route::post('/buy',[PlaceController::class,'buy'])->name('buy');
- Route::post('/logout',function(){Auth::logout();redirect('/login');})->name('logout2');
-
-
-
-
+ //Route::post('/logout',function(){Auth::logout();redirect('/login');})->name('logout');
 
 Auth::routes();
 
