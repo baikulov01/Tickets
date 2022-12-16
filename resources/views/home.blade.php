@@ -23,16 +23,13 @@
         </div>
     </div>
 </div> -->
-<div  class="text-center">
-    <h1 class="display-4">Мои билеты</h1>
-</div>
+
 <div class="text-center">
   <img src="assets/20945315.jpg" class="rounded" alt="" width="510" height="350">
 </div>
-
-
-
-
+<div  class="text-center">
+    <h1 class="display-4">Мои билеты</h1>
+</div>
 
     <div class="table-responsive">
 
