@@ -41,7 +41,7 @@ class PlaceController extends Controller
         $ticket->status = "Куплен";
         $ticket->save();
 
-        return redirect() ->route('places.index');
+        return redirect() ->route('home');
     }
 
     /**
