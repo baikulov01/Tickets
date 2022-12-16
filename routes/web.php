@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,7 +25,7 @@ Route::group(['middleware' => 'role:administrator'], function() {
     Route::get('/create', 'BusController@create');
     Route::post('/create', 'BusController@store');
 
-
+    Route::get('/ticketsPage', 'TicketController@index')->name('tickets.index');
     Route::get('/tickets_create', 'TicketController@create');
     Route::post('/tickets_create', 'TicketController@store');
     Route::get('/tickets/{ticket}', 'TicketController@show')->name('tickets_show');
@@ -32,7 +33,7 @@ Route::group(['middleware' => 'role:administrator'], function() {
     Route::get('/tickets_delete/{ticket}', 'TicketController@delete')->name('tickets_delete');
 
 
-    Route::get('/tripsPage', 'TripController@index')->name('trips.index');
+
     Route::get('/trips_create', 'TripController@create');
     Route::post('/trips_create', 'TripController@store');
     Route::get('/trips_delete/{trip}', 'TripController@delete')->name('trips_delete');
@@ -48,18 +49,15 @@ Route::group(['middleware' => 'role:administrator'], function() {
     Route::post('/places/{place}', 'PlaceController@update')->name('places_update');
     Route::get('/search', 'PlaceController@search')->name('search_place');
  });
- Route::get('/buy', [TicketController::class, 'buy'])->name('buy');
- Route::get('/ticketsPage', 'TicketController@index')->name('tickets.index');
 
+ Route::get('/tripsPage', 'TripController@index')->name('trips.index');
  Route::get('/search', 'BusController@search')->name('search');
+ Route::post('/buy',[PlaceController::class,'buy'])->name('buy');
+ Route::post('/logout',function(){Auth::logout();redirect('/login');})->name('logout2');
 
- 
 
- 
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 

@@ -18,9 +18,17 @@ class TripController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $trips = Trip::all();
+        $query = DB::table('trips')->whereDate('departure_time', '>', date("Y-m-d"));
+        if($request->has('from')){
+            $trips = $query->where('departure_place', $request->from);
+        }
+        if($request->has('to')){
+            $trips = $query->where('arrival_place', $request->to);
+        }
+        $trips = $query->get();
+
         return view('tripsPage', compact('trips'));
     }
 
@@ -36,7 +44,11 @@ class TripController extends Controller
 
     public function delete(Trip $trip)
     {
+        foreach(Place::where("id_trip",$trip->id)->get() as $place)
+            $place->delete();
         $trip->delete();
+
+
         return redirect()->route('trips.index');
     }
 
@@ -60,15 +72,18 @@ class TripController extends Controller
         $bus = Bus::where("id",request("id_bus"))->first();
         // dd($bus);
         for($i=0; $i<$bus->place_count;$i++){
+            $koeff = rand(100, 200)/100;
             $place = Place::create([
+                'place_number'=> $i+1,
                 'status' => "Свободно",
-                'id_trip' => $trip->id
+                'id_trip' => $trip->id,
+                'price' => $koeff*800/$bus->place_count,
             ]);
 
             Ticket::create([
                 'id_place' =>  $place->id,
                 'status' => "Не куплен",
-                'price' => 800/$bus->place_count,
+                'price' => $koeff*800/$bus->place_count,
             ]);
         }
         DB::commit();
@@ -91,7 +106,7 @@ class TripController extends Controller
      */
     public function show(Trip $trip)
     {
-         return view('trips_show', compact('trip'));
+        return view('trips_show', compact('trip'));
     }
 
     /**
@@ -132,6 +147,6 @@ class TripController extends Controller
      */
     public function destroy(Trip $trip)
     {
-        //
+
     }
 }

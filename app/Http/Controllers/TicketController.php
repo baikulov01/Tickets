@@ -51,18 +51,16 @@ class TicketController extends Controller
             'id_place' => request('id_place'),
             'id_user' => request('id_user'),
         ]);
-
-
     }
 
-    public function buy(Request $request){
-        $ticket = Ticket::where("id",$request->id)->first();
-        $ticket->id_user = Auth::user()->id;
-        $ticket->status = "Куплен";
-        $ticket->save();
+    // public function buy(Request $request){
+    //     $ticket = Ticket::where("id",$request->id)->first();
+    //     $ticket->id_user = Auth::user()->id;
+    //     $ticket->status = "Куплен";
+    //     $ticket->save();
 
-        return redirect() ->route('tickets.index');
-    }
+    //     return redirect() ->route('tickets.index');
+    // }
 
     /**
      * Display the specified resource.

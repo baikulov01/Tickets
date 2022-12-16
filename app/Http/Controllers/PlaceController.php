@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Place;
+use App\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PlaceController extends Controller
 {
@@ -12,9 +14,12 @@ class PlaceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $places = Place::all();
+        if($request->has('trip')){
+            $places = Place::where('id_trip', $request->trip)->where('status', 'Свободно')->get();
+        }
+        else $places = Place::all();
         return view('placesPage', compact('places'));
     }
 
@@ -22,8 +27,21 @@ class PlaceController extends Controller
     {
         $s = $request ->s;
         $places = Place::where('status', 'LIKE', "%{$s}%")->orderBy('status')->paginate(10);
-        
+
         return view('placesPage', compact('places'));
+    }
+
+    public function buy(Request $request){
+        $place = Place::where("id",$request->id)->first();
+        $place->status = "Куплен";
+        $place->save();
+
+        $ticket = Ticket::where('id_place', $place->id)->first();
+        $ticket->id_user = $request->id_user;
+        $ticket->status = "Куплен";
+        $ticket->save();
+
+        return redirect() ->route('places.index');
     }
 
     /**
@@ -51,9 +69,10 @@ class PlaceController extends Controller
     public function store(Request $request)
     {
         Place::create([
-            'id_bus' => request('id_bus'),
+            'place_number' => request('place_number'),
             'id_trip' => request('id_trip'),
             'status' => request('status'),
+            'price' => request('price'),
         ]);
 
         return redirect() ->route('places.index');
@@ -90,9 +109,10 @@ class PlaceController extends Controller
      */
     public function update(Request $request, Place $place)
     {
-        $place->id_bus= request('id_bus');
+        $place->place_number= request('place_number');
         $place->id_trip = request('id_trip');
         $place->status = request('status');
+        $place->price = request('price');
         $place->save();
 
         return redirect()->route('places.index');

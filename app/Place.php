@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Place extends Model
 {
-    protected $fillable = ['id_bus', 'id_trip', 'status'];
+    protected $fillable = ['place_number', 'id_trip', 'status','price'];
 }
