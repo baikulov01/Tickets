@@ -49,12 +49,12 @@
                 <form action="/buy" method="post">
                     @csrf
                 <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">МЕСТО</label>
-                        <input id="place_id" type="text" class="form-control"  name="id" >
+                        <!-- <label for="recipient-name" class="col-form-label">МЕСТО</label> -->
+                        <input id="place_id" type="hidden" class="form-control"  name="id" >
                     </div>
                 <div class="form-group">
                         <label for="recipient-name" class="col-form-label">ФИО</label>
-                        <input type="text" value="{{Auth::user()->name.Auth::user()->surname}}"  class="form-control" name="name">
+                        <input type="text" value="{{Auth::user()->name.(' ').Auth::user()->surname}}"  class="form-control" name="name">
                     </div>
 
                     <div class="form-group">

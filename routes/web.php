@@ -41,7 +41,6 @@ Route::group(['middleware' => 'role:administrator'], function() {
     Route::post('/trips/{trip}', 'TripController@update')->name('trips_update');
 
 
-    Route::get('/placesPage', 'PlaceController@index')->name('places.index');
     Route::get('/places_create', 'PlaceController@create');
     Route::post('/places_create', 'PlaceController@store');
     Route::get('/places_delete/{place}', 'PlaceController@delete')->name('places_delete');
@@ -53,6 +52,7 @@ Route::group(['middleware' => 'role:administrator'], function() {
  Route::get('/tripsPage', 'TripController@index')->name('trips.index');
  Route::get('/search', 'BusController@search')->name('search');
  Route::post('/buy',[PlaceController::class,'buy'])->name('buy');
+ Route::get('/placesPage', 'PlaceController@index')->name('places.index');
  //Route::post('/logout',function(){Auth::logout();redirect('/login');})->name('logout');
 
 Auth::routes();

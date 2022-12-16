@@ -37,7 +37,7 @@ class PlaceController extends Controller
         $place->save();
 
         $ticket = Ticket::where('id_place', $place->id)->first();
-        $ticket->id_user = $request->id_user;
+        $ticket->id_user = Auth::user()->id;
         $ticket->status = "Куплен";
         $ticket->save();
 

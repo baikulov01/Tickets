@@ -25,14 +25,12 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="/ticketsPage">Tickets</a>
-      </li>
-      @role('administrator')
-
-      <li class="nav-item">
         <a class="nav-link" href="/tripsPage">Trips</a>
       </li>
-
+      @role('administrator')
+      <li class="nav-item">
+        <a class="nav-link" href="/ticketsPage">Tickets</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="/busesPage">Buses</a>
       </li>
