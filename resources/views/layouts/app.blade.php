@@ -18,6 +18,17 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style type="text/css">
+        .navbar-nav{
+            float: none;
+            text-align: center;
+        }
+        .navbar-nav li{
+            display: inline-block;
+            float: none;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -32,13 +43,17 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <h1 class="navbar-brand" href="/">Билеты.ru</h1>
+                
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav w-100 justify-content-center">
+                <img src="assets/ticket1.png" width="40" height="40" class="d-inline-block align-top" alt="">
+                <h1 class="navbar-brand"> </h1>
+                <h1 class="navbar-brand" href="/">Билеты.ru</h1>
+                
                 <li class="nav-item active">
                     <a class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
                 </li>
