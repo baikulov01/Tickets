@@ -15,7 +15,7 @@ class BusController extends Controller
     public function index()
     {
         $buses = Bus::all();
-        return view('home',compact('buses'));
+        return view('busesPage',compact('buses'));
     }
 
     /**
@@ -86,6 +86,14 @@ class BusController extends Controller
             $bus->save();
 
         return redirect()->route('buses.index');
+    }
+
+    public function search(Request $request)
+    {
+        $s = $request ->s;
+        $buses = Bus::where('number', 'LIKE', "%{$s}%")->orderBy('number')->paginate(10);
+        
+        return view('busesPage',compact('buses'));
     }
 
     /**
