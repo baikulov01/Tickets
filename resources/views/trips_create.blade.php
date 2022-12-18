@@ -23,8 +23,17 @@
         </div>
         <div class="form-group">
             <label for="id_bus" >ID автобуса</label>
-            <input type="number" id="id_bus" name="id_bus" class="form-control"/>
+            <select name="id_bus" class="form-control">
+            @foreach($buses as $bus)
+                <option> {{$bus->id}} </option>
+            @endforeach
+            </select>
+
+
+
+            <!-- <input type="dropdown" id="id_bus" name="id_bus" class="form-control"/> -->
         </div>
+
         <button class="btn btn-primary" type="submit">Добавить</button>
         <a href="{{route('trips.index')}}" class="btn btn-default">Назад</a>
     </form>

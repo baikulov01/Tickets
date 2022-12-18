@@ -54,9 +54,18 @@
                 <td>{{$trip->arrival_place}}</td>
                 <td>{{$trip->departure_time}}</td>
                 <td>{{$trip->arrival_time}}</td>
+
+
+                @if(Auth::user())
                 <td><a href="/placesPage?trip={{$trip->id}}" class="btn btn-success">Выбрать место</td>
+                @else
+                <td><a href="/login" class="btn btn-success">Выбрать место</td>
+                @endif
+
+                @role('administrator')
                 <td><a href="/trips/{{$trip->id}}" class="btn btn-primary">Обновить</td>
                 <td><a href="trips_delete/{{$trip->id}}" class="btn btn-danger">Удалить</td>
+                @endrole
             </tr>
                 @endforeach
             </tbody>

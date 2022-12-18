@@ -43,7 +43,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -53,11 +53,10 @@
                 <img src="assets/ticket1.png" width="40" height="40" class="d-inline-block align-top" alt="">
                 <h1 class="navbar-brand"> </h1>
                 <h1 class="navbar-brand" href="/">Билеты.ru</h1>
-                
-                <li class="nav-item active">
-                    <a class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
-                </li>
 
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/tripsPage">Trips</a>
                 </li>

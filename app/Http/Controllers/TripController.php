@@ -39,7 +39,8 @@ class TripController extends Controller
      */
     public function create()
     {
-        return view('trips_create');
+        $buses = Bus::all();
+        return view('trips_create',['buses'=>$buses]);
     }
 
     public function delete(Trip $trip)

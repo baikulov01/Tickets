@@ -25,7 +25,7 @@
       <h1 class="navbar-brand"> </h1>
       <h1 class="navbar-brand" href="/">Билеты.ru</h1>
       <li class="nav-item active">
-        <a class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
       </li>
 
       <li class="nav-item">
@@ -41,7 +41,7 @@
       <li class="nav-item">
         <a class="nav-link" href="/placesPage">Places</a>
       </li>
-</div>    
+</div>
       @endrole
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
